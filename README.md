@@ -30,7 +30,7 @@ Minigame de Capture a Bandeira feito para eventos da ADR Studios
 
 ### Passos de Instalação
 
-1. Baixe o arquivo `CaptureTheFlag-2.1.0.jar` dos releases
+1. Baixe o arquivo `CaptureTheFlag-1.0.0.jar` dos releases
 2. Coloque o JAR na pasta `plugins` do seu servidor
 3. Reinicie o servidor
 4. Configure o `config.yml` em `plugins/CaptureTheFlag/`
@@ -47,7 +47,7 @@ cd CaptureTheFlag
 ./gradlew shadowJar
 ```
 
-O JAR gerado estará em `build/libs/CaptureTheFlag-2.1.0.jar`
+O JAR gerado estará em `build/libs/CaptureTheFlag-1.0.0.jar`
 
 ## ⚙️ Configuração
 
@@ -323,7 +323,7 @@ As bandeiras usam **PersistentDataContainer (PDC)** com a chave `captureflag:fla
 ./gradlew clean
 ```
 
-O JAR estará em `build/libs/CaptureTheFlag-2.1.0.jar`
+O JAR estará em `build/libs/CaptureTheFlag-1.0.0.jar`
 
 ## 🐛 Solução de Problemas
 
@@ -358,30 +358,6 @@ O JAR estará em `build/libs/CaptureTheFlag-2.1.0.jar`
 - Verifique se o `config.yml` é um YAML válido
 - Apague o `config.yml` e reinicie o servidor para regenerar o padrão
 - Revise o console por erros de parsing
-
-## 📝 Histórico de Versões
-
-### v2.1.0
-- Scoreboard corrigida (linhas duplicadas, Death Zone label, estado por fase)
-- Zona de entrega corrigida (validação dupla: carrier UUID + item no inventário)
-- Morte com bandeira agora restaura o bloco original em vez de dropar novo item
-- `EventArea.isInside()` corrigido para retornar `false` quando não configurado
-- `EntityPickupItemEvent` cancela e processa manualmente para entrega correta do item
-- Adicionado `InventoryClickEvent` para impedir manipulação da bandeira no inventário
-- Identificação de bandeira via PDC (`FlagUtil`) para compatibilidade com qualquer bloco
-
-### v2.0.0
-- Reescrita completa da mecânica de bandeira
-- Bandeira agora dropa como item e deve ser entregue em zona configurável
-- Adicionado glow no portador com cor do time dono da bandeira
-- Zonas de entrega independentes por time
-- Sistema de retorno automático da bandeira ao ser tocada pelo aliado
-
-### v1.0.0
-- Lançamento inicial
-- Sistema básico de Capture a Bandeira
-- Dois times com spawn, bandeira e kit configuráveis
-- Scoreboard, revive e death zone
 
 ## 📄 Licença
 
