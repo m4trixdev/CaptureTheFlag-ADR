@@ -1,0 +1,59 @@
+# Configuracoes do evento
+event:
+  duration: 2      # Duracao em minutos
+  revive-time: 5    # Tempo de revive em segundos
+  min-players: 2    # Minimo de jogadores para iniciar
+  max-players: 99999999  # Maximo de jogadores no evento
+
+# Ativa o modo Death Zone apos o tempo acabar
+death-zone:
+  enabled: true
+
+# Ativa o glowing na bandeira e no jogador com a bandeira
+glow:
+  enabled: true
+
+# Nomes dos times
+teams:
+  team1:
+    name: "&cTime 1"
+  team2:
+    name: "&9Time 2"
+
+
+# Configuracao da scoreboard lateral
+scoreboard:
+  title: "&b&lCapture a Bandeira"
+  flag-alive: "&a[VIVA]"
+  flag-dead: "&c[DESTRUIDA]"
+  flag-carried: "&e[ROUBADA]"
+  death-zone-label: "&c&lDEATH ZONE"
+  starting-label: "&eINICIANDO..."
+  lines:
+    - "&7Estado: &f%state%"
+    - "&7Tempo: &f%time%"
+    - " "
+    - "%team1%"
+    - " &7Bandeira: %flag1%"
+    - " &7Vivos: &f%alive1%"
+    - "  "
+    - "%team2%"
+    - " &7Bandeira: %flag2%"
+    - " &7Vivos: &f%alive2%"
+
+# Mensagens do plugin
+messages:
+  prefix: "&6[Evento]&r "
+  event-start: "&aO evento comecou!"
+  event-stop: "&cO evento foi encerrado."
+  flag-picked-up: "%player% &cpegou a bandeira do %team%&c!"
+  flag-dropped: "&eA bandeira do %team% &efoi dropada no chao!"
+  flag-returned: "&aA bandeira do %team% &afoi retornada ao lugar!"
+  flag-captured: "%player% &acapturou a bandeira do %team%&a!"
+  team-win: "%team% &avenceu o evento!"
+  revive-countdown: "&eRenascendo em &f%time%s"
+  revive-title: "&aRENASCEU!"
+  revive-subtitle: "&7Bem-vindo de volta"
+  death-zone-start: "&cDeath Zone ativado! Sobreviva!"
+  outside-area: "&cVoce nao pode sair da area do evento!"
+  countdown: "&a%time%"

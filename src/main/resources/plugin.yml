@@ -1,0 +1,29 @@
+name: CaptureTheFlag
+version: '1.0.0'
+main: br.com.m4trixdev.Main
+api-version: '1.21'
+author: M4trixDev
+description: Plugin de Capture a Bandeira
+
+commands:
+  evento:
+    description: Comando principal do CaptureTheFlag
+    usage: /evento <iniciar|parar|time1|time2|area>
+    permission: captureflag.admin
+
+permissions:
+  captureflag.admin:
+    description: Acesso completo ao plugin
+    default: op
+  captureflag.start:
+    description: Permissao para iniciar o evento
+    default: op
+  captureflag.stop:
+    description: Permissao para parar o evento
+    default: op
+  captureflag.set:
+    description: Permissao para configurar o evento
+    default: op
+  captureflag.bypass:
+    description: Jogador nao sera colocado automaticamente no evento
+    default: false
