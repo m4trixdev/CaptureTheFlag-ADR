@@ -299,7 +299,7 @@ Main
 | `DEATH_ZONE` | Tempo esgotado, revive desabilitado |
 | `ENDING` | Encerrando, limpando dados |
 
-### FlagUtil — Identificação Segura de Bandeiras
+### FlagUtil - Identificação Segura de Bandeiras
 
 As bandeiras usam **PersistentDataContainer (PDC)** com a chave `captureflag:flag_team_id` para identificação. Isso garante que o item seja reconhecido corretamente independentemente do tipo de bloco configurado como bandeira.
 
