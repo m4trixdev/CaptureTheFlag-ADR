@@ -42,10 +42,12 @@ public class PlayerListener implements Listener {
         if (!eventManager.isInEvent(player)) return;
 
         event.getDrops().clear();
-        event.setKeepInventory(false);
+        event.setKeepInventory(true);
         event.deathMessage(null);
 
         eventManager.handlePlayerDeath(player);
+
+        event.setKeepInventory(false);
     }
 
     @EventHandler(priority = EventPriority.HIGH)

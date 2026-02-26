@@ -381,18 +381,35 @@ public class EventManager {
         flagTeam.getFlagLocation().getBlock().setType(Material.AIR);
 
         ItemStack flagItem = FlagUtil.createFlagItem(flagTeam);
-        Location dropLoc = blockLoc.clone().add(0.5, 0.1, 0.5);
-        Item entity = dropLoc.getWorld().dropItem(dropLoc, flagItem);
-        entity.setUnlimitedLifetime(true);
-        entity.setPickupDelay(20);
-        entity.setVelocity(new Vector(0, 0, 0));
-        droppedFlagEntities.put(flagTeam.getId(), entity);
 
-        String msg = config.getMsgFlagPickedUp()
-                .replace("%player%", breaker.getName())
-                .replace("%team%", ColorUtil.translate(flagTeam.getDisplayName()));
-        if (!ColorUtil.isEmpty(msg)) {
-            Bukkit.broadcastMessage(config.format(msg));
+        if (breaker.getInventory().firstEmpty() != -1) {
+            breaker.getInventory().addItem(flagItem);
+            flagTeam.setFlagCarrierUUID(breaker.getUniqueId());
+
+            if (config.isGlowEnabled()) {
+                int glowIndex = flagTeam == team1 ? 1 : 2;
+                scoreboardManager.addToGlowTeam(breaker, glowIndex);
+            }
+
+            String msg = config.getMsgFlagPickedUp()
+                    .replace("%player%", breaker.getName())
+                    .replace("%team%", ColorUtil.translate(flagTeam.getDisplayName()));
+            if (!ColorUtil.isEmpty(msg)) {
+                Bukkit.broadcastMessage(config.format(msg));
+            }
+        } else {
+            Location dropLoc = blockLoc.clone().add(0.5, 0.1, 0.5);
+            Item entity = dropLoc.getWorld().dropItem(dropLoc, flagItem);
+            entity.setUnlimitedLifetime(true);
+            entity.setPickupDelay(0);
+            entity.setVelocity(new Vector(0, 0, 0));
+            droppedFlagEntities.put(flagTeam.getId(), entity);
+
+            String msg = config.getMsgFlagDropped()
+                    .replace("%team%", ColorUtil.translate(flagTeam.getDisplayName()));
+            if (!ColorUtil.isEmpty(msg)) {
+                Bukkit.broadcastMessage(config.format(msg));
+            }
         }
 
         refreshScoreboard();
@@ -430,6 +447,13 @@ public class EventManager {
         if (config.isGlowEnabled()) {
             int glowIndex = flagTeam == team1 ? 1 : 2;
             scoreboardManager.addToGlowTeam(player, glowIndex);
+        }
+
+        String msg = config.getMsgFlagPickedUp()
+                .replace("%player%", player.getName())
+                .replace("%team%", ColorUtil.translate(flagTeam.getDisplayName()));
+        if (!ColorUtil.isEmpty(msg)) {
+            Bukkit.broadcastMessage(config.format(msg));
         }
 
         refreshScoreboard();
@@ -641,7 +665,7 @@ public class EventManager {
         permanentSpectators.remove(player.getUniqueId());
 
         TeamData playerTeam = getTeam(player);
-        TeamData enemyTeam = playerTeam == team1 ? team2 : team1;
+        TeamData enemyTeam = (playerTeam == team1) ? team2 : (playerTeam == team2 ? team1 : null);
 
         if (enemyTeam != null && enemyTeam.isFlagBeingCarried()
                 && player.getUniqueId().equals(enemyTeam.getFlagCarrierUUID())) {

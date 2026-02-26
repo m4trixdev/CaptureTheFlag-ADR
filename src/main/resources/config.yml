@@ -1,6 +1,6 @@
 # Configuracoes do evento
 event:
-  duration: 25      # Duracao em minutos
+  duration: 2      # Duracao em minutos
   revive-time: 5    # Tempo de revive em segundos
   min-players: 2    # Minimo de jogadores para iniciar
   max-players: 99999999  # Maximo de jogadores no evento
@@ -23,7 +23,7 @@ teams:
 
 # Configuracao da scoreboard lateral
 scoreboard:
-  title: "&bC&aT&cF"
+  title: "&b&lCapture a Bandeira"
   flag-alive: "&a[VIVA]"
   flag-dead: "&c[DESTRUIDA]"
   flag-carried: "&e[ROUBADA]"
